@@ -11,8 +11,9 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       # set the :user_id key in the sessions hash to the user's id
       session[:user_id] = user.id 
-      redirect_to movies_path
+      redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     else
+      flash.now[:alert] = "Log in failed..."
       render :new # show sign up page if user doesn't exist
     end
   end
