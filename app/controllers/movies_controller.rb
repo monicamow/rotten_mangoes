@@ -29,7 +29,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
    
     if @movie.save
-      redirect_to @movie
+      redirect_to movies_path
     else
       render 'new' # save the already-typed info
     end
