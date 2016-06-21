@@ -17,4 +17,11 @@ class SessionsController < ApplicationController
       render :new # show sign up page if user doesn't exist
     end
   end
+
+  def destroy
+    # clear session
+    session[:user_id] = nil
+    # redirect
+    redirect_to movies_path, notice: "BAH FELICIA!"
+  end
 end
