@@ -1,14 +1,4 @@
 == Rotten Mangoes
 
-<<<<<<< HEAD
-A Rails App Tutorial by Lighthouse Labs
-
-
-
-=======
-## A Rails App Tutorial by Lighthouse Labs
-
-
-
-
->>>>>>> d462e9c7622440f8bfde169906aa38eb1e605e1e
+A Lighthouse Labs Production
+(with Monica Mow)
