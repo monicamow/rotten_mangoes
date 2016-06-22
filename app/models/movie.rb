@@ -25,9 +25,15 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_past
 
-  def self.search(search)
-    if search
-      self.where("title LIKE ? AND director LIKE ?", "%#{search}%", "%#{search}%")
+  def self.search_title(search)
+    unless search.blank?
+      self.where("title LIKE ?", "%#{search}%")
+    end
+  end
+
+  def self.search_director(search)
+    unless search.blank?
+      self.where("director LIKE ?", "%#{search}%")
     end
   end
 
