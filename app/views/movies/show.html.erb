@@ -27,10 +27,12 @@
   <%= formatted_date(@movie.release_date) %>
 </p>
 
-<p>
-  <strong>Average Review:</strong>
-  <td><%= @movie.review_average %></td>/10
-</p>    
+<% if @movie.reviews.any? %>
+  <p>
+    <strong>Average Review:</strong>
+    <td><%= @movie.review_average %>/10</td>
+  </p>  
+<% end %>  
 
 <hr>
 
