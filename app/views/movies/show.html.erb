@@ -23,6 +23,11 @@
 </p>
 
 <p>
+  <strong>Image Upload:</strong>
+  <%= image_tag(@movie.image_url(:thumb).to_s) %>
+</p>
+
+<p>
   <strong>Release Date:</strong>
   <%= formatted_date(@movie.release_date) %>
 </p>
