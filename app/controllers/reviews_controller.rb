@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  before_filter :load_movie
+  before_filter :load_movie, :restrict_access
 
   def new
     # equivalent to `@review = Review.new(movie_id: @movie.id)`
