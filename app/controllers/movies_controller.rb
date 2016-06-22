@@ -1,7 +1,11 @@
 class MoviesController < ApplicationController
   def index
     @movies = Movie.all
-    @searched_movies = Movie.search(params[:search])
+    @searched_titles = Movie.search_title(params[:title])
+    @searched_directors = Movie.search_director(params[:director])
+    if @searched_titles || @searched_directors
+      @searched_movies = [@searched_titles, @searched_directors].flatten
+    end
   end
 
   def show
