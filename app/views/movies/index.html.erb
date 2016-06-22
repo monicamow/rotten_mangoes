@@ -1,10 +1,17 @@
 <h1>Movie Listing</h1>
 
 <%= form_tag movies_path, method: :get do %>
-  <p>
+  <div>
+    <%= label_tag :title %><br/>
     <%= text_field_tag :search, params[:search] %>
+  </div>
+  <div>
+    <%= label_tag :director %><br/>
+    <%= text_field_tag :search, params[:search] %>
+  </div>
+  <div>
     <%= submit_tag 'Search', name: nil %>
-  </p>
+  </div>
 <% end %>
 
 <% if @searched_movies %>
@@ -15,7 +22,11 @@
   <% end %>
 <% end %>
 
+<hr>
+
 <%= link_to 'New Movie', new_movie_path %>
+
+<hr>
 
 <table>
   <tr>
