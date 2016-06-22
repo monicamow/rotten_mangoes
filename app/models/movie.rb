@@ -25,7 +25,7 @@ class Movie < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("title LIKE ?", "%#{search}%")
+      self.where("title LIKE ? AND director LIKE ?", "%#{search}%", "%#{search}%")
     end
   end
 
