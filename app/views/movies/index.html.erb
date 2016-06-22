@@ -10,7 +10,8 @@
     <th>Description</th>
     <th>Poster</th>
     <th>Release Date</th>
-    <th colspan="7"></th>
+    <th>Average Review</th>
+    <th colspan="8"></th>
   </tr>
  
   <% @movies.each do |movie| %>
@@ -21,6 +22,7 @@
       <td><%= movie.description %></td>
       <td><%= movie.poster_image_url %></td>
       <td><%= movie.release_date %></td>
+      <td><%= movie.review_average %></td>/10    
       <td><%= link_to 'Show', movie_path(movie) %></td>
       <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
       <td><%= link_to 'Destroy', movie_path(movie),

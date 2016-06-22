@@ -23,6 +23,12 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_past
 
+  def review_average
+    if reviews.any?
+      reviews.sum(:rating_out_of_ten)/reviews.size
+    end
+  end
+
   protected
 
   # custom validation
