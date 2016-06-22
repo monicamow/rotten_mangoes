@@ -9,9 +9,10 @@
     <th>Runtime (Minutes)</th>
     <th>Description</th>
     <th>Poster</th>
+    <th>Image Upload</th>    
     <th>Release Date</th>
     <th>Average Review</th>
-    <th colspan="8"></th>
+    <th colspan="9"></th>
   </tr>
  
   <% @movies.each do |movie| %>
@@ -21,6 +22,7 @@
       <td><%= movie.runtime_in_minutes %></td>
       <td><%= movie.description %></td>
       <td><%= movie.poster_image_url %></td>
+      <td><%= image_tag(movie.image_url(:thumb).to_s) %></td>
       <td><%= formatted_date(movie.release_date) %></td>
       <% if movie.reviews.any? %>
         <td><%= movie.review_average %>/10</td>
