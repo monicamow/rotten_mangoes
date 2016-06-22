@@ -1,6 +1,5 @@
 <p>
-  <strong>Title:</strong>
-  <%= @movie.title %>
+  <h1><%= @movie.title %></h1>
 </p>
  
 <p>
@@ -28,4 +27,20 @@
   <%= @movie.release_date %>
 </p>
 
-<%= link_to 'Back', movies_path %>
+<hr>
+
+<h1>Reviews:</h1>
+<% if current_user %>
+  <% @movie.reviews.each do |review| %>
+    <%= review.text %>
+    <%= review.rating_out_of_ten %>/10
+    <small><%= review.user.email %></small><br>
+  <% end %>
+  <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
+<% else %>
+  <p>Please <%= link_to "Log In", new_session_path %> to see reviews and add your own.</p>
+<% end %>
+
+
+
+<%= link_to 'Back to Movie Listing', movies_path %>

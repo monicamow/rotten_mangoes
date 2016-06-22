@@ -9,7 +9,7 @@ class Review < ActiveRecord::Base
   validates :movie,
     presence: true
 
-  validates :text
+  validates :text,
     presence: true
 
   validates :rating_out_of_ten,
