@@ -41,7 +41,7 @@
   <% @movie.reviews.each do |review| %>
     <%= review.text %>
     <%= review.rating_out_of_ten %>/10
-    <small><%= review.user.fullname %></small><br>
+    <small><%= review.user.full_name %></small><br>
   <% end %>
   <p><%= link_to "Write a review!", new_movie_review_path(@movie) %></p>
 <% else %>
