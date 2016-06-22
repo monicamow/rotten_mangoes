@@ -1,5 +1,20 @@
 <h1>Movie Listing</h1>
 
+<%= form_tag movies_path, method: :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', name: nil %>
+  </p>
+<% end %>
+
+<% if @searched_movies %>
+  <% @searched_movies.each do |searched_movie| %>
+    <ul>
+      <li><%= link_to searched_movie.title, movie_path(searched_movie) %></li>
+    </ul>
+  <% end %>
+<% end %>
+
 <%= link_to 'New Movie', new_movie_path %>
 
 <table>
