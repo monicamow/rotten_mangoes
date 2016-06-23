@@ -3,10 +3,8 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     @searched_titles = Movie.search_title(params[:title])
     @searched_directors = Movie.search_director(params[:director])
-    @searched_duration_range = Movie.search_duration_range(params[:runtime_in_minutes])  
-    @searched_duration_under = Movie.search_duration_under(params[:runtime_in_minutes])  
-    @searched_movies = [@searched_titles, @searched_directors, 
-      @searched_duration_under, @searched_duration_range].flatten
+    @searched_durations = Movie.search_duration(params[:runtime_in_minutes])
+    @searched_movies = [@searched_titles, @searched_directors, @searched_durations].flatten
   end
 
   def show
