@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
    
     if @user.save
+      UserMailer.welcome_email(@user).deliver_now
       unless User.find(session[:user_id]).admin
         session[:user_id] = @user.id # auto log in
       end
