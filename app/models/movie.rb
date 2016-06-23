@@ -23,6 +23,10 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_past
 
+  # scopes
+  scope :less_than, -> (minutes) { where("runtime_in_minutes < ?", minutes) }
+  scope :greater_than, -> (minutes) { where("runtime_in_minutes > ?", minutes) }
+
   def self.search_title(search)
     unless search.blank?
       self.where("title LIKE ?", "%#{search}%")
@@ -35,19 +39,20 @@ class Movie < ActiveRecord::Base
     end
   end
 
-  def self.search_duration_under(search)
-    puts "=============== under"
-    unless search.blank?
-      self.where("runtime_in_minutes < ?", search.to_i)
-    end
-  end
+  # search by duration
 
-  def self.search_duration_range(search)
-     puts "=============== netween"
-    unless search.blank?
-      search_array = search.split(",")
-      search_result = self.where("runtime_in_minutes > ?", search_array[0].to_i).where("runtime_in_minutes < ?", search_array[1].to_i)
+  def self.search_duration(search)
+    case search
+    when "Under 90 minutes"
+      search_results = Movie.less_than(90)
+    when "Between 90 and 120 minutes"
+      search_results = Movie.less_than(120).greater_than(90)
+    when "Over 120 minutes"
+      search_results = Movie.greater_than(120)
+    else
+      "WHAT?"
     end
+    search_results
   end
 
   def review_average
