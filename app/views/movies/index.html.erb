@@ -10,7 +10,7 @@
     <%= text_field_tag :director %>
   </div>
     <%= label_tag 'Duration' %><br/>
-    <%= collection_select(:movie, :runtime_in_minutes, Movie.all, :id, :title) %>
+    <%= select_tag(:runtime_in_minutes, options_for_select([["Under 90 minutes", "90"], ["Between 90 and 120 minutes", "90,120"], ["Over 120 minutes", "120"]])) %>
   <div>
     <%= submit_tag 'Search', name: nil %>
   </div>

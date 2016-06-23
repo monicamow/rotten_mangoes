@@ -3,9 +3,10 @@ class MoviesController < ApplicationController
     @movies = Movie.all
     @searched_titles = Movie.search_title(params[:title])
     @searched_directors = Movie.search_director(params[:director])
-    if @searched_titles || @searched_directors
-      @searched_movies = [@searched_titles, @searched_directors].flatten
-    end
+    @searched_duration_range = Movie.search_duration_range(params[:runtime_in_minutes])  
+    @searched_duration_under = Movie.search_duration_under(params[:runtime_in_minutes])  
+    @searched_movies = [@searched_titles, @searched_directors, 
+      @searched_duration_under, @searched_duration_range].flatten
   end
 
   def show
@@ -34,7 +35,7 @@ class MoviesController < ApplicationController
     @movie = Movie.new(movie_params)
    
     if @movie.save
-      redirect_to movies_path, notice: "#{movie.title} was submitted successfully!"
+      redirect_to movies_path, notice: "#{@movie.title} was submitted successfully!"
     else
       render 'new' # save the already-typed info
     end
