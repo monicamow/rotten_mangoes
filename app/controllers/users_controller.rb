@@ -7,7 +7,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
    
     if @user.save
-      session[:user_id] = @user.id # auto log in
+      unless User.find(session[:user_id]).admin
+        session[:user_id] = @user.id # auto log in
+      end
       redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!" # show movie listing as home page
     else
       render 'new' # save the already-typed info
