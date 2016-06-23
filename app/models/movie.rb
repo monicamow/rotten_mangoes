@@ -35,6 +35,21 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  def self.search_duration_under(search)
+    puts "=============== under"
+    unless search.blank?
+      self.where("runtime_in_minutes < ?", search.to_i)
+    end
+  end
+
+  def self.search_duration_range(search)
+     puts "=============== netween"
+    unless search.blank?
+      search_array = search.split(",")
+      search_result = self.where("runtime_in_minutes > ?", search_array[0].to_i).where("runtime_in_minutes < ?", search_array[1].to_i)
+    end
+  end
+
   def review_average
     reviews.sum(:rating_out_of_ten)/reviews.size
   end
