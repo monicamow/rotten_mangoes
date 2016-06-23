@@ -3,9 +3,9 @@ Rails.application.routes.draw do
 
   get 'reviews/create'
 
-  get 'sessions/new'
+  # get 'sessions/new'
 
-  get 'sessions/create'
+  # get 'sessions/create'
 
   get 'users/new'
 
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :sessions, only: [:new, :create, :destroy]
+  resource :session, only: [:new, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
