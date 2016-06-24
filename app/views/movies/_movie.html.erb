@@ -1,6 +1,6 @@
-<table>
+<table class="movie-listing-table">
   <tr>
-    <td>
+    <td class="info-cell">
       <h1><%= movie.title %></h1>
       <h4>Director: <%= movie.director %></h4>
       <p>Release Date: <%= formatted_date(movie.release_date) %></p>
@@ -12,8 +12,8 @@
         <p></p>
       <% end %> 
     </td>
-    <td>
-      <p><%= image_tag(movie.image_url(:thumb).to_s) %></p>
+    <td class="poster-cell">
+      <p><%= image_tag(movie.image_url(:resized).to_s) %></p>
     </td>
   </tr>
   <tr>
