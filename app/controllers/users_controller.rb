@@ -13,10 +13,10 @@ class UsersController < ApplicationController
    
     if @user.save
       UserMailer.welcome_email(@user).deliver_now
-      unless User.find(session[:user_id]).admin
+      if current_user.nil?
         session[:user_id] = @user.id # auto log in
+        redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!" # show movie listing as home page
       end
-      redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!" # show movie listing as home page
     else
       render 'new' # save the already-typed info
     end    
