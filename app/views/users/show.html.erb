@@ -8,8 +8,10 @@
 </p>
 
 <div class="admin-privilege">
-<% if @user.admin %>
-  <p><%= @user.firstname %> has admin privileges.</p>
+<% if current_user.admin %>
+  <% if @user.admin %>
+    <p><%= @user.firstname %> has admin privileges.</p>
+  <% end %>
 <% end %>
 </div>
 
