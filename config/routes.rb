@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create] do
+    resource :profile, to: 'users#show'
+  end
 
   resource :session, only: [:new, :create, :destroy]
 
