@@ -1,0 +1,28 @@
+<table>
+  <tr>
+    <td>
+      <h1><%= movie.title %></h1>
+      <h4>Director: <%= movie.director %></h4>
+      <p><%= formatted_date(movie.release_date) %></p>
+      <p>Runtime: <%= movie.runtime_in_minutes %> minutes</p>
+      <p>Synopsis: <%= movie.description %></p>
+      <% if movie.reviews.any? %>
+        <p>Average Rating: <%= movie.review_average %>/10</p>
+      <% else %>
+        <p></p>
+      <% end %> 
+    </td>
+    <td>
+      <p><%= image_tag(movie.image_url(:thumb).to_s) %></p>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to 'Show', movie_path(movie) %> |
+      <%= link_to 'Edit', edit_movie_path(movie) %> |
+      <%= link_to 'Destroy', movie_path(movie),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+</table>

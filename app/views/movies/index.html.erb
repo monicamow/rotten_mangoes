@@ -26,46 +26,10 @@
   <% end %>
 <% end %>
 
-<hr>
-
 <%= link_to 'New Movie', new_movie_path %>
 
-<hr>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Director</th>
-    <th>Runtime (Minutes)</th>
-    <th>Description</th>
-    <th>Poster</th>
-    <th>Image Upload</th>    
-    <th>Release Date</th>
-    <th>Average Review</th>
-    <th colspan="9"></th>
-  </tr>
- 
-  <% @movies.each do |movie| %>
-    <tr>
-      <td><%= movie.title %></td>
-      <td><%= movie.director %></td>
-      <td><%= movie.runtime_in_minutes %></td>
-      <td><%= movie.description %></td>
-      <td><%= movie.poster_image_url %></td>
-      <td><%= image_tag(movie.image_url(:thumb).to_s) %></td>
-      <td><%= formatted_date(movie.release_date) %></td>
-      <% if movie.reviews.any? %>
-        <td><%= movie.review_average %>/10</td>
-      <% else %>
-        <td></td>
-      <% end %> 
-      <td><%= link_to 'Show', movie_path(movie) %></td>
-      <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-      <td><%= link_to 'Destroy', movie_path(movie),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
-</table>
+<% @movies.each do |movie| %>
+  <%= render partial: "movie", locals: {movie: movie} %>
+<% end %>
 
 <%= link_to 'Home', welcome_index_path %>
