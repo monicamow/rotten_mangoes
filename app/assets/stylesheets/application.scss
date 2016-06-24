@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
- *= require 'materialize'
- *= require 'materialize/extras/nouislider'
  */
+
+ @import "materialize";
+ @import "materialize/extras/nouislider";
