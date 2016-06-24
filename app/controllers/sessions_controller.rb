@@ -22,6 +22,6 @@ class SessionsController < ApplicationController
     # clear session
     session[:user_id] = nil
     # redirect
-    redirect_to movies_path, notice: "BAH FELICIA!"
+    redirect_to welcome_index_path, notice: "BAH FELICIA!"
   end
 end

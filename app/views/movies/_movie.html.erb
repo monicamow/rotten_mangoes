@@ -1,7 +1,7 @@
 <table class="movie-listing-table">
   <tr>
     <td class="info-cell">
-      <h1><%= movie.title %></h1>
+      <h1><%= link_to movie.title, movie_path(movie) %></h1>
       <h4>Director: <%= movie.director %></h4>
       <p>Release Date: <%= formatted_date(movie.release_date) %></p>
       <p>Runtime: <%= movie.runtime_in_minutes %> minutes</p>
@@ -18,7 +18,6 @@
   </tr>
   <tr>
     <td>
-      <%= link_to 'Show', movie_path(movie) %> |
       <%= link_to 'Edit', edit_movie_path(movie) %> |
       <%= link_to 'Destroy', movie_path(movie),
               method: :delete,
