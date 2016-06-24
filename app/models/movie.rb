@@ -25,23 +25,10 @@ class Movie < ActiveRecord::Base
 
   validate :release_date_is_in_the_past
 
-  # scopes
-  # for searching by title
-  scope :search_title, -> (title_input) { where("title LIKE ?", "%#{title_input}%") }
-  scope :search_director, -> (director_input) { where("director LIKE ?", "%#{director_input}%") }
-  # for searching by duration
-  scope :less_than, -> (minutes) { where("runtime_in_minutes < ?", minutes) }
-  scope :greater_than, -> (minutes) { where("runtime_in_minutes > ?", minutes) }
-
   def self.search(search)
-    if search[:title].present?
-      search_results = Movie.search_title(search[:title])
+    if search
+      where('title LIKE :search OR director LIKE :search', search: "%#{search}%")
     end
-    
-    if search[:director].present?
-      search_results = Movie.search_director(search[:director])
-    end
-    search_results
   end
 
   # search by duration
