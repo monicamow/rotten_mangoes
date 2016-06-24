@@ -45,7 +45,9 @@
   <% end %>
 <% end %>
 
-<%= link_to 'New Movie', new_movie_path %>
+<div id="new-movie" class="waves-effect waves-light btn">
+<%= link_to '<i class="material-icons right">movie</i>New Movie'.html_safe, new_movie_path %>
+</div>
 
 <% @movies.each do |movie| %>
   <%= render partial: "movie", locals: {movie: movie} %>

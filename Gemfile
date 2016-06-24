@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 # MATERIALIZE is the BEST (literally (figuratively) [and spiritually])
 gem 'materialize-sass'
+#gem 'material_icons'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

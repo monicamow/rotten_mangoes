@@ -3,7 +3,7 @@
     <td>
       <h1><%= movie.title %></h1>
       <h4>Director: <%= movie.director %></h4>
-      <p><%= formatted_date(movie.release_date) %></p>
+      <p>Release Date: <%= formatted_date(movie.release_date) %></p>
       <p>Runtime: <%= movie.runtime_in_minutes %> minutes</p>
       <p>Synopsis: <%= movie.description %></p>
       <% if movie.reviews.any? %>
