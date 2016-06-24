@@ -1,4 +1,7 @@
 <h1>Movie Listing</h1>
+<div id="new-movie" class="waves-effect waves-light btn">
+<%= link_to '<i class="material-icons right">movie</i>New Movie'.html_safe, new_movie_path %>
+</div>
 
 <!--   <nav>
     <div class="nav-wrapper">
@@ -28,9 +31,9 @@
       <% disabled_option = "Duration" %>
       <%= select_tag(:runtime_in_minutes, options_for_select([disabled_option, "Under 90 minutes", "Between 90 and 120 minutes", "Over 120 minutes"], disabled: disabled_option, selected: disabled_option), class: "duration-dropdown") %>
     </div>
-  </div>
-  <div class="row">
-    <%= submit_tag 'Search', name: nil, class: "waves-effect waves-light btn" %>
+    <div class="col s6">
+      <%= submit_tag 'Search', name: nil, class: "waves-effect waves-light btn" %>
+    </div>
   </div>
 <% end %>
 
@@ -43,10 +46,6 @@
     <% end %>
   <% end %>
 <% end %>
-
-<div id="new-movie" class="waves-effect waves-light btn">
-<%= link_to '<i class="material-icons right">movie</i>New Movie'.html_safe, new_movie_path %>
-</div>
 
 <% @movies.each do |movie| %>
   <%= render partial: "movie", locals: {movie: movie} %>
