@@ -15,8 +15,8 @@
   <% end %>
 
   <p>
-    <%= f.label :admin, 'Admin?' %><br>
-    <%= f.check_box :admin %>
+    <%= f.check_box :admin, class: "filled-in", id: "filled-in-box" %>
+    <%= f.label 'Admin?', for: "filled-in-box" %><br>
   </p>
 
   <p>

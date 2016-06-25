@@ -16,6 +16,8 @@ class UsersController < ApplicationController
       if current_user.nil?
         session[:user_id] = @user.id # auto log in
         redirect_to movies_path, notice: "Welcome aboard, #{@user.firstname}!" # show movie listing as home page
+      else
+        redirect_to admin_users_path, notice: "New user, #{@user.firstname}, was just created." # go back to admin page
       end
     else
       render 'new' # save the already-typed info
