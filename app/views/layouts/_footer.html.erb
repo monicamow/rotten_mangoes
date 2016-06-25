@@ -1,11 +1,11 @@
  <footer>
   <small>
     <% if current_user && current_user.admin %>
-      Signed in as <%= current_user.full_name %> 🍿 <%= link_to "Log Out", session_path("current"), method: :delete %> 🎥 <%= link_to "Admin Page", admin_users_path %>
+      Signed in as <%= current_user.full_name %> 🍿 <%= link_to "Log Out", session_path("current"), method: :delete %> 🎥 <%= link_to "Admin Page", admin_users_path %> 🍿 <%= link_to "Your Profile", user_profile_path(current_user) %>
     <% elsif current_user %>
-      Signed in as <%= current_user.full_name %> | <%= link_to "Log Out", session_path("current"), method: :delete %>      
+      Signed in as <%= current_user.full_name %> 🍿 <%= link_to "Log Out", session_path("current"), method: :delete %> 🎥 <%= link_to "Your Profile", user_profile_path(current_user) %>
     <% else %>
-      <%= link_to "Log In", new_session_path %> | <%= link_to "Sign Up", new_user_path %>      
+      <%= link_to "Log In", new_session_path %> 🍿 <%= link_to "Sign Up", new_user_path %>      
     <% end %>
   </small>
 </footer>
